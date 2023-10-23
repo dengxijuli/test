@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Bilibili评论系统</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="comment-container">
+    <h2>主评论</h2>
+    <ul class="comment-list">
+        <li class="comment">
+            <div class="avatar">
+                <img src="img/avatar1.jpg" alt="用户头像">
+            </div>
+            <div class="comment-content">
+                <div class="comment-header">
+                    <span class="username">用户A</span>
+                    <span class="floor">1楼</span>
+                    <span class="time">2022-01-01 12:00</span>
+                </div>
+                <div class="comment-body">
+                    这是一条主评论
+                </div>
+                <div class="comment-footer">
+                    <button class="reply-btn">回复</button>
+                    <button class="like-btn">点赞</button>
+                    <button class="fold-btn">收起</button>
+                    <button class="expand-btn">展开</button>
+                </div>
+                <ul class="reply-list">
+                    <li class="reply">
+                        <div class="avatar">
+                            <img src="img/avatar2.jpg" alt="用户头像">
+                        </div>
+                        <div class="reply-content">
+                            <div class="reply-header">
+                                <span class="username">用户B</span>
+                                <span class="time">2022-01-01 12:05</span>
+                            </div>
+                            <div class="reply-body">
+                                这是一条回复
+                            </div>
+                            <div class="reply-footer">
+                                <button class="like-btn">点赞</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    <textarea id="comment-input" placeholder="写下你的评论..."></textarea>
+    <button id="comment-submit">发表评论</button>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
