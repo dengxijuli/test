@@ -1,0 +1,49 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>微信登录示例</title>
+</head>
+<body>
+<h1>微信登录示例</h1>
+<div id="qrcode"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    // 获取二维码URL和state参数
+    var qrCodeUrl = "{qrCodeUrl}";
+    var state = "{state}";
+
+    // 在页面上展示微信登录二维码
+    $('#qrcode').append('<img src="' + qrCodeUrl + '">');
+
+    // 定义检查登录状态的函数
+    function checkLoginState() {
+        // 发送Ajax请求，检查登录状态
+        $.ajax({
+            type: 'GET',
+            url: '/wechat/login/check?state=' + state,
+            success: function (data) {
+                if (data.code === 0) {
+                    // 登录成功，跳转到首页
+                    window.location.href = '/';
+                } else if (data.code === 1) {
+                    // 用户已扫描二维码，等待用户确认登录
+                    setTimeout(checkLoginState, 2000);
+                } else {
+                    // 登录失败，显示错误提示
+                    alert('登录失败：' + data.message);
+                }
+            },
+            error: function () {
+                // 请求失败，显示错误提示
+                alert('请求失败，请稍后重试');
+            }
+        });
+    }
+
+    // 开始检查登录状态
+    setTimeout(checkLoginState, 2000);
+</script>
+</body>
+</html>
